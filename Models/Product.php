@@ -1,6 +1,6 @@
 <?php
 
-require 'Connection/DbManager.php';
+require_once 'Connection/DbManager.php';
 
 class Product
 {

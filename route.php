@@ -77,10 +77,9 @@ addRoute('GET', '/products/(\d+)', function ($matches) {
 });
 
 addRoute('GET', '/products', function () {
-    $data = [];
     $products = Product::FetchAll();
     foreach ($products as $product) {
-        $data[] = [
+        $data[]= [
             'type' => 'products',
             'id' => $product->getId(),
             'attributes' =>
@@ -90,11 +89,14 @@ addRoute('GET', '/products', function () {
                     'marca' => $product->getMarca()
                 ]
         ];
+
     }
     header('Location: /products');
     header('HTTP/1.1 200 Ok');
     header('Content-Type: application/vnd.api+json');
     echo json_encode(['data' => $data], JSON_PRETTY_PRINT);
+
+
 });
 
 addRoute('DELETE', '/products/(\d+)', function ($id) {
